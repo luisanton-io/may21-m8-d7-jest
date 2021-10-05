@@ -38,17 +38,17 @@ describe("Testing the server", () => {
         })
     })
 
-    function checkResponse(body) {
-        const expectation = {
-            message: "Test success",
-            name: "Name",
-            age: 50
-        }
+    // function checkResponse(body) {
+    //     const expectation = {
+    //         message: "Test success",
+    //         name: "Name",
+    //         age: 50
+    //     }
 
-        Object.entries(expectation).forEach(([key, value]) => {
-            expect(body[key]).toBe(value);
-        })
-    }
+    //     Object.entries(expectation).forEach(([key, value]) => {
+    //         expect(body[key]).toBe(value);
+    //     })
+    // }
 
     test("should test that the /test endpoint is OK", async () => {
         const response = await request.get('/test')
@@ -74,6 +74,16 @@ describe("Testing the server", () => {
         expect(response.status).toBe(201)
         expect(response.body._id).toBeDefined()
 
+    })
+
+    it("should test that a GET /products endpoint is returning a valid product", async () => {
+        const response = await request.post('/products').send(validProduct)
+
+        expect(response.status).toBe(201)
+        expect(response.body._id).toBeDefined()
+
+        const idResponse = await request.get('/products/' + response.body._id)
+        expect(idResponse.body.name).toEqual(validProduct.name)
     })
 
     const invalidProduct = {
