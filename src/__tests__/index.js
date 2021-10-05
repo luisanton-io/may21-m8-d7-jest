@@ -117,4 +117,4 @@ describe("Testing the server", () => {
   });
 });
 
-// use >>>>heroku logs -a m8d2jestkidd-developmen-sebkti --tail<<<< after heroku login
+// use >>>>heroku logs -a m8d2jestkidd-my-develop-t4aj2i --tail<<<< after heroku login
