@@ -23,4 +23,13 @@ productsRouter.get("/:id", async (req, res) => {
   }
 });
 
+productsRouter.delete("/:id", async (req, res) => {
+  try {
+    await ProductModel.findByIdAndDelete(req.params.id);
+    res.status(204).send();
+  } catch (error) {
+    res.status(404).send(error);
+  }
+});
+
 export default productsRouter;

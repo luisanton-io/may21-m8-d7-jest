@@ -95,8 +95,13 @@ describe("Testing the server", () => {
     expect(response.status).toBe(404);
   });
 
-  // it("should test that a DELETE /products:ID endpoint is returning a valid response 204", async () => {
-  // });
+  it("should test that a DELETE /products/:id endpoint is returning a valid response", async () => {
+    const response = await request.post("/products").send(validProduct);
+    expect(response.status).toBe(201);
+    expect(response.body._id).toBeDefined();
+    const idResponse = await request.delete("/products/" + response.body._id);
+    expect(idResponse.status).toBe(204);    
+  });
 
   // it("should test that a PUT /products:ID endpoint is accepting requests, that response.body.name is changed, and that typeof name in response.body is a "string", async () => {
   // });
