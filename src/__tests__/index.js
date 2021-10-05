@@ -116,3 +116,5 @@ describe("Testing the server", () => {
     expect(typeof idResponse.body.name).toBe("string");
   });
 });
+
+// use >>>>heroku logs -a m8d2jestkidd-developmen-sebkti --tail<<<< after heroku login
