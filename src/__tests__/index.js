@@ -56,7 +56,7 @@ describe("Testing the server", () => {
     expect(response.body.message).toBe("Test success");
   });
 
-  it("should test that a /nonexistent endpoint is returning 404", async () => {
+  it("should test that a /nonexistant endpoint is returning 404", async () => {
     const response = await request.get("/not-existing");
 
     expect(response.status).toBe(404);
@@ -94,4 +94,13 @@ describe("Testing the server", () => {
     const idResponse = await request.get("/products/" + response.body._id);
     expect(idResponse.body.name).toEqual(validProduct.name);
   });
+
+  // it("should test that a GET /products:ID endpoint is returning an error 404 with an invalid ID", async () => {
+  // });
+
+  // it("should test that a DELETE /products:ID endpoint is returning a valid response 204", async () => {
+  // });
+
+  // it("should test that a PUT /products:ID endpoint is accepting requests, that response.body.name is changed, and that typeof name in response.body is a "string", async () => {
+  // });
 });
