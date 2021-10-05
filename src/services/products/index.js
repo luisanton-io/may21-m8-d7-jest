@@ -23,6 +23,22 @@ productsRouter.get("/:id", async (req, res) => {
   }
 });
 
+productsRouter.put("/:id", async (req, res) => {
+  try {
+    const updatedProduct = await ProductModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    await updatedProduct.save();
+    res.send(updatedProduct);
+  } catch (error) {
+    res.status(404).send(error);
+  }
+});
+
 productsRouter.delete("/:id", async (req, res) => {
   try {
     await ProductModel.findByIdAndDelete(req.params.id);

@@ -103,6 +103,16 @@ describe("Testing the server", () => {
     expect(idResponse.status).toBe(204);    
   });
 
-  // it("should test that a PUT /products:ID endpoint is accepting requests, that response.body.name is changed, and that typeof name in response.body is a "string", async () => {
-  // });
+  const updatedProduct = {
+    name: "iPhone 2"
+  };
+
+  it("should test that a PUT /products:ID endpoint is accepting requests with updated name of type string", async () => {
+    const response = await request.post("/products").send(validProduct);
+    expect(response.status).toBe(201);
+    expect(response.body._id).toBeDefined();
+    const idResponse = await request.put("/products/" + response.body._id).send(updatedProduct)
+    expect(idResponse.body.name).not.toEqual(response.body.name);
+    expect(typeof idResponse.body.name).toBe("string");
+  });
 });
