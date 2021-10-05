@@ -76,16 +76,6 @@ describe("Testing the server", () => {
 
     })
 
-    it("should test that a GET /products endpoint is returning a valid product", async () => {
-        const response = await request.post('/products').send(validProduct)
-
-        expect(response.status).toBe(201)
-        expect(response.body._id).toBeDefined()
-
-        const idResponse = await request.get('/products/' + response.body._id)
-        expect(idResponse.body.name).toEqual(validProduct.name)
-    })
-
     const invalidProduct = {
         price: 900
     }
@@ -97,6 +87,18 @@ describe("Testing the server", () => {
         expect(response.body._id).not.toBeDefined()
 
     })
+
+    it("should test that a GET /products endpoint is returning a valid product", async () => {
+        const response = await request.post('/products').send(validProduct)
+
+        expect(response.status).toBe(201)
+        expect(response.body._id).toBeDefined()
+
+        const idResponse = await request.get('/products/' + response.body._id)
+        expect(idResponse.body.name).toEqual(validProduct.name)
+    })
+
+
 
 
 })
