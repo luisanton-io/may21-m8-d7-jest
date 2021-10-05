@@ -4,13 +4,13 @@ import productsRouter from "./services/products/index.js";
 
 const app = express();
 
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
 app.get("/test", (req, res) => {
-    res.status(200).send({ message: "Test success" })
-})
+  res.status(200).send({ message: "Test success" });
+});
 
-app.use("/products", productsRouter)
+app.use("/products", productsRouter);
 
-export default app
+export default app;
