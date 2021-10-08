@@ -116,3 +116,4 @@ describe("Testing the server", () => {
     })
 
 })
+//Have no idea what im doing lol
