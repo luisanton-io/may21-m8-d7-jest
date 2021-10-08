@@ -65,7 +65,6 @@ describe("Testing the server", () => {
         expect(response.status).toBe(404)
     })
 
-    //OBJ 1
     const validProduct = {
         name: 'iPhone',
         price: 900
